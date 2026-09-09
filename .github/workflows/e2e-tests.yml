@@ -16,7 +16,15 @@ jobs:
         with:
           start: npm start
           browser: chrome
-      - name : Upload Cypress Screenshots
+
+      - name : Upload Screenshots
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: cypress-screenshots-chrome
+          path: cypress/screenshots
+      
+      - name : Upload Videos
         uses: actions/upload-artifact@v7
         if: always()
         with:
