@@ -9,10 +9,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+
+        
       - name: Cypress run
         uses: cypress-io/github-action@v7
         with:
           start: npm start
           browser: chrome
+      - name : Upload Cypress Screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-screenshots-chrome
+          path: cypress/screenshots
